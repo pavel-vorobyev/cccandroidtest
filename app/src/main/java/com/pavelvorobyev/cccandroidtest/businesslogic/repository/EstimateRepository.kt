@@ -3,7 +3,6 @@ package com.pavelvorobyev.cccandroidtest.businesslogic.repository
 import com.pavelvorobyev.cccandroidtest.businesslogic.db.dao.EstimateDao
 import com.pavelvorobyev.cccandroidtest.businesslogic.db.entity.Estimate
 import com.pavelvorobyev.cccandroidtest.businesslogic.db.entity.EstimateAndPerson
-import io.reactivex.Completable
 import io.reactivex.Flowable
 import io.reactivex.Maybe
 import io.reactivex.schedulers.Schedulers

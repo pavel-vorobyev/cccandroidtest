@@ -2,8 +2,6 @@ package com.pavelvorobyev.cccandroidtest.businesslogic.repository
 
 import com.pavelvorobyev.cccandroidtest.businesslogic.db.dao.PersonDao
 import com.pavelvorobyev.cccandroidtest.businesslogic.db.entity.Person
-import io.reactivex.Completable
-import io.reactivex.Flowable
 import io.reactivex.Maybe
 import io.reactivex.schedulers.Schedulers
 
