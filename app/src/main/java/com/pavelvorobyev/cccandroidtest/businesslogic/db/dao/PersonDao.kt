@@ -4,11 +4,13 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import com.pavelvorobyev.cccandroidtest.businesslogic.db.entity.Person
+import io.reactivex.Completable
+import io.reactivex.Maybe
 
 @Dao
 interface PersonDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(person: Person): Long
+    fun insert(person: Person): Maybe<Long>
 
 }

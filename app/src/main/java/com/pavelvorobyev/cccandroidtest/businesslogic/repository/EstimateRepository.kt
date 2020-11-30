@@ -3,28 +3,21 @@ package com.pavelvorobyev.cccandroidtest.businesslogic.repository
 import com.pavelvorobyev.cccandroidtest.businesslogic.db.dao.EstimateDao
 import com.pavelvorobyev.cccandroidtest.businesslogic.db.entity.Estimate
 import com.pavelvorobyev.cccandroidtest.businesslogic.db.entity.EstimateAndPerson
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.flowOn
+import io.reactivex.Completable
+import io.reactivex.Flowable
+import io.reactivex.Maybe
+import io.reactivex.schedulers.Schedulers
 
 class EstimateRepository(private val estimateDao: EstimateDao) {
 
-    @ExperimentalCoroutinesApi
-    suspend fun addEstimate(estimate: Estimate): Flow<Long> {
-        return flow {
-            val result = estimateDao.insert(estimate)
-            emit(result)
-        }.flowOn(Dispatchers.IO)
+    fun addEstimate(estimate: Estimate): Maybe<Long> {
+        return estimateDao.insert(estimate)
+            .subscribeOn(Schedulers.io())
     }
 
-    @ExperimentalCoroutinesApi
-    suspend fun getEstimate(id: String): Flow<EstimateAndPerson> {
-        return flow {
-            val estimate = estimateDao.getEstimate(id)
-            emit(estimate)
-        }.flowOn(Dispatchers.IO)
+    fun getEstimate(id: String): Flowable<EstimateAndPerson> {
+        return estimateDao.getEstimate(id)
+            .subscribeOn(Schedulers.io())
     }
 
 }
